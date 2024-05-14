@@ -9,9 +9,10 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<ICompanyRepository, CompanyRepositoryEF>(); //EFC Implementation
+//builder.Services.AddScoped<ICompanyRepository, CompanyRepositoryEF>(); //EFC Implementation
 //builder.Services.AddScoped<ICompanyRepository, CompanyRepository>(); //Dapper implementation of Company
 //builder.Services.AddScoped<ICompanyRepository, CompanyRepositorySP>(); //Dapper implementation of Company with stored procedures
+builder.Services.AddScoped<ICompanyRepository, CompanyRepositoryContrib>(); //Dapper implementation of Company with stored procedures and Contrib
 builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>(); //Dapper implementation of Employee
 
 var app = builder.Build();
